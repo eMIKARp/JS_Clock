@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Wyświetlanie zegarka</title>
+
+	<script type="text/javascript">
+	
+	function odliczanie() {
+		
+		var dzisiaj = new Date();
+	
+		var dzien = dzisiaj.getDate();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear()
+		
+		var godzina = dzisiaj.getHours();
+		godzina = checkIfLessThanTen(godzina);
+		var minuta =  dzisiaj.getMinutes();
+		minuta = checkIfLessThanTen(minuta);
+		var sekunda = dzisiaj.getSeconds();
+		sekunda = checkIfLessThanTen(sekunda);
+		
+		document.getElementById("zegar").innerHTML = dzien + "/" + miesiac + "/" +
+		"/" + rok +"|"+godzina + ":" + minuta + ":" + sekunda;
+		
+		setTimeout(() => {
+			odliczanie();
+		}, 1000);
+	}	
+	
+	function checkIfLessThanTen(a){
+		if (a < 10){
+			a = "0"+a;
+		} else {
+			a = a;
+		}
+		return a;
+	}
+	
+    </script>
+</head>
+<body onload="odliczanie();">
+	<div id="zegar">dflkjdsfslkj</div>
+</body>
+</html>
